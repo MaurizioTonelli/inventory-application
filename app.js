@@ -16,8 +16,9 @@ var app = express();
 app.use(compression());
 app.use(helmet());
 var mongoose = require("mongoose");
-var mongoDB =
+var dev_db_url =
   "mongodb+srv://admin:dodododo123@cluster0.1arkm.mongodb.net/inventory_application?retryWrites=true&w=majority";
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
