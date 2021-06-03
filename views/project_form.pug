@@ -1,0 +1,29 @@
+extend layout 
+
+block content 
+    div.content
+        form(method="POST" action="")
+            .form-group 
+                label(for="title") Project title 
+                input(type="text" name="title" required="true" value=(project==undefined? "" : project.title))
+            .form-group 
+                label(for="author") Author 
+                select(name="author" required="true")
+                    -authors.sort(function(a,b){let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB)? 1 : 0})
+                    each author in authors 
+                        if project 
+                            option(value=author._id selected=(author._id.toString() == project.author._id || author._id.toString == project.author ? "selected" : false)) #{author.name}
+                        else 
+                            option(value=author._id ) #{author.name}
+            .form-group 
+                label(for="technology") Technology 
+                for technology in technologies 
+                    label(for=technology._id) #{technology.name}
+                    input(type="checkbox" name="technologies" value=technology._id checked=technology.checked)
+
+            input(type="submit" value="Add project")
+        
+        if errors 
+            ul  
+                for error in errors 
+                    li!=error.msg

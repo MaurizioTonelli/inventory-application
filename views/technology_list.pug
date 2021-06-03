@@ -1,0 +1,15 @@
+extend layout 
+
+block content 
+    div.content
+        h1= title 
+        if technologies.length 
+            ul 
+            each technology in technologies 
+                li 
+                    a(href=technology.url) #{technology.name}
+        else 
+            p There are no technologies 
+        
+        button.btn
+            a(href="/catalog/technology/create") Create new technology

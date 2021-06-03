@@ -1,0 +1,18 @@
+extend layout 
+
+block content 
+    div.content
+        h1.title= title
+        ul
+        if projects.length
+            each project in projects 
+                li
+                    a(href=project.url) #{project.title}
+                    ul 
+                    each technology in project.technologies
+                        li #{technology.name}
+        else 
+            p There are no projects
+        
+        button.btn
+            a(href="/catalog/project/create") Add new project

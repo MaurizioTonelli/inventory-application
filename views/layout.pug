@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    nav.navBar 
+      ul 
+        li 
+          a(href="/catalog/projects") Projects 
+        li 
+          a(href="/catalog/authors") Authors 
+        li 
+          a(href="/catalog/technologies") Technologies 
+    block content

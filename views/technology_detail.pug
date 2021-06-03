@@ -1,0 +1,16 @@
+extend layout 
+
+block content 
+    div.content
+        h1= title 
+        h2= technology.name 
+        p= technology.description
+        if technology_projects.length 
+            ul 
+            each project in technology_projects
+                li 
+                    a(href=project.url) #{project.title}
+        else 
+            p This technology has no projects 
+        a(href="/catalog/technology/" + technology.id +"/update") Update technology
+        a(href="/catalog/technology/" + technology.id +"/delete") Delete technology

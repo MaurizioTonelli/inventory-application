@@ -1,0 +1,11 @@
+extend layout 
+
+block content 
+    div.content
+        h1 Delete #{project.title}?
+        if project 
+            form(method="POST" action="")
+                input(type="hidden" value=project._id name="projectid")
+                input(type="submit" value="Delete project")
+        else 
+            p Project not found

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  div.content
+    h1.title= title
+    p Welcome to #{title}
+    h2 We have 
+    p #{data.projectCount} projects 
+    p #{data.authorCount} authors 
+    p #{data.technologyCount} technologies

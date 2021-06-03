@@ -1,0 +1,18 @@
+extend layout 
+
+block content 
+    div.content
+        h1= title
+        if project 
+            h4 Project title: #{project.title}
+            h3 By 
+                a(href=project.author.url) #{project.author.name}
+            h2 Technologies used for this project
+            ul 
+            each technology in project.technologies
+                li 
+                    a(href=technology.url) #{technology.name}
+        else 
+            p Project not found 
+        a(href="/catalog/project/" + project._id + "/update") Update project
+        a(href="/catalog/project/" + project._id + "/delete") Delete project

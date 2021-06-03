@@ -1,0 +1,15 @@
+extend layout 
+
+block content 
+    .content 
+        h1 Delete #{author.name} ?
+        if author_projects.length 
+            h3 To delete this author, you need to delete these projects first: 
+            ul 
+            each project in author_projects 
+                li  
+                    a(href=project.url) #{project.title}
+        else 
+            form(method="POST" action="")
+                input(type="hidden" name="authorid" value=author._id)
+                input(type="submit" value="Delete Author")

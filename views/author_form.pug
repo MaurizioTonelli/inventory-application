@@ -1,0 +1,13 @@
+extend layout 
+
+block content 
+    div.content
+        h1= title 
+        form(method="POST" action="")
+            label(for="name") Author name
+            input(type="text" name="name" value=(author == undefined? "" : author.name))
+            input(type="submit")
+        if errors 
+            ul 
+                for error in errors 
+                    li!=error.msg

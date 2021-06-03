@@ -1,0 +1,15 @@
+extend layout 
+
+block content 
+    .content 
+        h1 Delete #{technology.name} ?
+        if technology_projects.length 
+            h3 To delete this technology, you need to delete these projects first: 
+            ul 
+            each project in technology_projects 
+                li  
+                    a(href=project.url) #{project.title}
+        else 
+            form(method="POST" action="")
+                input(type="hidden" name="technologyid" value=technology._id)
+                input(type="submit" value="Delete Technology")

@@ -1,0 +1,16 @@
+extend layout 
+
+block content 
+    div.content
+        h1= title 
+        h2= author.name 
+        h3 Projects created
+        if author_projects.length 
+            ul 
+            each project in author_projects
+                li 
+                    a(href=project.url) #{project.title}
+        else 
+            p This author has no projects 
+        a(href="/catalog/author/" + author.id +"/update") Update author
+        a(href="/catalog/author/" + author.id +"/delete") Delete author
